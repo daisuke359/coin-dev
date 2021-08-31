@@ -1,25 +1,29 @@
 import "bootstrap/dist/css/bootstrap.css";
-import CoinList from './components/CoinList';
-import Header from './components/Header';
 import GlobalStyle from './GlobalStyles';
-import styled from 'styled-components';
 import {CurrencyContextProvider} from "./context/CurrencyContext";
-
-const MainWrapper = styled.div`
-        background-color: #F5F5F5;
-    `;
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
 
 function App() {
 
   return (
     <CurrencyContextProvider>
-    <div className="App">
       <GlobalStyle/>
-      <Header/>
-      <MainWrapper>
-        <CoinList/>
-      </MainWrapper>
-    </div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/detail/:id">
+            <Detail/>
+          </Route>
+        </Switch>
+      </Router>
     </CurrencyContextProvider>
   );
 }

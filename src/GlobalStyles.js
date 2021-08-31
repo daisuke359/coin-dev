@@ -5,12 +5,15 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-family: Inter, Verdana, Tahoma, sans-serif;
+    }
+
+    body {
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 1%, rgba(199,33,131,0.989233193277311) 100%, rgba(0,212,255,1) 100%);
     }
 `;
-
 export const Container = styled.div`
-    padding: 40px 50px;
     z-index: 1;
     width: 100%;
     margin: 0 auto;
@@ -22,10 +25,12 @@ export const H3 = styled.h3`
 `;
 
 export const Input = styled.input`
+    background-color: #F5F5F5;
     height: 40px;
     margin: 0 auto;
     border: 1px solid white;
     padding: 5px;
+    border-radius: 5px;
 
     &:focus {
         outline: none;

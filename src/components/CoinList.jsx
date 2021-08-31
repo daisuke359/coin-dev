@@ -8,32 +8,55 @@ import { useCurrencyContext } from '../context/CurrencyContext';
 import Paginate from './Pagination';
 
 const ListContainer = styled(Container)`
-        width: 80%;
-    `;
+    width: 80%;
+`;
 
-    const StyledTable = styled(Table)`
-        background-color: white;
-        margin: 0 auto;
-    `;
+const StyledTable = styled(Table)`
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+
+    thead {
+        background-color: #1D1F27;
+        color: white;
+    }
+
+    thead ,tr, th, td {
+        border: none; 
+    }
+
+    tr {
+        border-bottom: 1px solid #dee2e6;
+
+        &:last-child {
+            border: none;
+        }
+    }
+`;
 
 
 const SeacrhContainer = styled(Container)`
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        ${Container}
-    `;
+    width: 60%;
+    padding: 30px 50px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    ${Container}
+`;
 
-    const SearchText = styled(H3)`
-        color: black;
-        padding-bottom: 30px;
-        ${H3}
-    `;
+const SearchText = styled(H3)`
+    padding-bottom: 30px;
+    color: white;
+    ${H3}
+`;
 
-    const SearchInput = styled(Input)`
-        width: 80%;
-        ${Input}
-    `;
+const SearchInput = styled(Input)`
+    width: 70%;
+    ${Input}
+`;
 
 export default function CoinList() {
 
@@ -58,10 +81,9 @@ export default function CoinList() {
             const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false", 
             {headers: {"Access-Control-Allow-Origin": "*"}});
             setCurrencies(res.data);
-            console.log(currencies);
         };
         getCurrencies();
-    }, [])
+    }, [setCurrencies])
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -81,8 +103,7 @@ export default function CoinList() {
                 <SearchInput ref={input} onChange={handleChange} placeholder="type name of currencey"/>
             </SeacrhContainer>
             <ListContainer>
-            <h5>Cryptocurrency Prices by Market Cap</h5>
-            <StyledTable bordered hover>
+            <StyledTable striped bordered hover>
                 <thead>
                     <tr>
                         <th>#</th>
