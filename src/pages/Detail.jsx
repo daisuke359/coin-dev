@@ -24,7 +24,7 @@ export default function Detail() {
         return data.map((el) => {
           return {
             x: el[0],
-            y: el[1].toFixed(2),
+            y: el[1],
           };
         });
       };

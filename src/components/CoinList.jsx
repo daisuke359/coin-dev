@@ -83,7 +83,7 @@ export default function CoinList() {
             setCurrencies(res.data);
         };
         getCurrencies();
-    }, [setCurrencies])
+    }, [])
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);

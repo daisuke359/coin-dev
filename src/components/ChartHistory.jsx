@@ -32,9 +32,7 @@ export default function ChartHistory({data}) {
     }
 
     useEffect(() => {
-        console.log("called");
         if(detail) {
-            console.log("inside")
             const labels = [];
             const date = getDateFormat();
             for(let i = 0; i < date.length; i++) {
@@ -46,11 +44,11 @@ export default function ChartHistory({data}) {
                     labels.push(new Date(date[i].x).toLocaleDateString());
                 }                
             }
-
+    
             if(chart) {
                 chart.destroy();
             }
-
+    
             const newChart = new Chart(chartRef.current, {
                 type: "line",
                 data: {
@@ -71,8 +69,9 @@ export default function ChartHistory({data}) {
                 }
             })
             setChart(newChart);
-        }
-    }, [dateFormat])
+        };
+
+    }, [dateFormat, data]);
 
     const DateTabs = styled.ul`
         display: flex;
