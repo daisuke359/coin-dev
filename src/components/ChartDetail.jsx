@@ -40,6 +40,12 @@ const DetailLeftMain = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
+    @media (max-width: 920px) {
+        span {
+            display: none;
+        }
+    }
     img {
         width: 40px;
         margin-right: 10px;
