@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { Chart, ArcElement, LineElement, BarElement, PointElement, BarController, BubbleController, DoughnutController, LineController, PieController, PolarAreaController, RadarController, ScatterController, CategoryScale, LinearScale, LogarithmicScale, RadialLinearScale, TimeScale, TimeSeriesScale, Decimation, Filler, Legend, Title, Tooltip } from 'chart.js';
 import { historyOptions } from '../config/chartConfig';
 import { useState } from 'react';
+import { Container } from '../GlobalStyles';
 
 const ChartCanvas = styled.canvas`
-    width: 60%;
 `;
-
 
 Chart.register( ArcElement, LineElement, BarElement, PointElement, BarController, BubbleController, DoughnutController, LineController, PieController,PolarAreaController, RadarController, ScatterController, CategoryScale, LinearScale, LogarithmicScale, RadialLinearScale, TimeScale, TimeSeriesScale, Decimation, Filler, Legend, Title, Tooltip);
 
@@ -117,18 +116,18 @@ export default function ChartHistory({data}) {
 
 
     return (
-        <>
+        <div>
         {detail &&
-            <div>
-            <DateTabs>
-                <li className="list-day" onClick={() => setDateFormat("1 Day")}>1D</li>
-                <li className="list-month" onClick={() =>setDateFormat("1 Month")}>1M</li>
-                <li className="list-year" onClick={() =>setDateFormat("1 Year")}>1Y</li>
-            </DateTabs>
-            <ChartCanvas ref={chartRef}></ChartCanvas>
-        </div>
+            <>
+                <DateTabs>
+                    <li className="list-day" onClick={() => setDateFormat("1 Day")}>1D</li>
+                    <li className="list-month" onClick={() =>setDateFormat("1 Month")}>1M</li>
+                    <li className="list-year" onClick={() =>setDateFormat("1 Year")}>1Y</li>
+                </DateTabs>
+                <ChartCanvas ref={chartRef}></ChartCanvas>
+            </>
         }
-        </>
+        </div>
         
     )
 

@@ -9,6 +9,11 @@ const DetailContainer = styled(Container)`
     margin: 20px 0 50px;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 920px) {
+        flex-direction: column;
+        margin: 10px 0 30px;
+    }
 `;
 
 const DetailLeft = styled.div`
@@ -16,6 +21,13 @@ const DetailLeft = styled.div`
         margin: 0;
         font-size: 2em;
     }
+
+    @media (max-width: 920px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
 `;
 
 const DetailRight = styled.div`
@@ -46,6 +58,10 @@ const DetailLeftLinks = styled.div`
     display: flex;
     margin-left: 50px;
 
+    @media (max-width: 920px) {
+        margin-left: 0;
+    }
+
     a {
         text-decoration: none;
         margin-right: 10px;
@@ -62,10 +78,28 @@ const DetailLink = styled.div`
     border-radius: 8px;
     transition: all 0.2s;
 
+    @media (max-width: 920px) {
+        font-size: 0.5em;
+        padding: 4px;
+
+        a {
+            margin: 0;
+        }
+
+        .link-text {
+            display: none;
+        }
+    }
+
+
     a {
         color: black;
-        margin-left: 4px;
-        margin-right: 4px;
+        display: flex;
+        align-items: center;
+
+        .link-text {
+            margin-left: 4px;
+        }
     }
 
     &:hover {
@@ -86,6 +120,10 @@ export default function ChartDetail({detail}) {
         align-items: center;
         justify-content: flex-end;
         margin-bottom: 10px;
+
+        @media (max-width: 920px) {
+            justify-content: flex-start;
+        }
 
         h3 {
             margin-bottom: 0;
@@ -111,6 +149,14 @@ export default function ChartDetail({detail}) {
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: 920px) {
+            justify-content: flex-start;
+
+            p {
+                margin-left: 10px;
+            }
+        }
+
         span {
             color: #808A9D;
         }
@@ -135,12 +181,16 @@ export default function ChartDetail({detail}) {
                     </DetailLeftMain>
                     <DetailLeftLinks>
                         <DetailLink>
-                            <LinkIcon></LinkIcon>
-                            <a href={detail.links.homepage[0]}>Homepage</a>
+                            <a href={detail.links.homepage[0]}>
+                                <LinkIcon></LinkIcon>
+                                <span className="link-text">Homepage</span>
+                            </a>
                         </DetailLink>
                         <DetailLink>
-                            <CodeIcon></CodeIcon>
-                            <a href={detail.links.repos_url.github[0]}>Souce code</a>
+                            <a href={detail.links.repos_url.github[0]}>
+                                <CodeIcon></CodeIcon>
+                                <span className="link-text">Souce code</span>
+                                </a>
                         </DetailLink>
                     </DetailLeftLinks>
                 </DetailLeft>

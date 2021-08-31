@@ -7,11 +7,16 @@ import ChartHistory from '../components/ChartHistory';
 import { Container } from '../GlobalStyles';
 
 const DetailContainer = styled(Container)`
-    width: 70%;
+    width: 75%;
     margin: 50px auto;
     padding: 30px 60px;
     background-color: white;
     border-radius: 5px;
+
+    @media (max-width: 920px) {
+      width: 90%;
+      padding: 20px 30px;
+    }
 `;
 
 export default function Detail() {

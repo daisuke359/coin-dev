@@ -9,6 +9,10 @@ import Paginate from './Pagination';
 
 const ListContainer = styled(Container)`
     width: 80%;
+
+    @media (max-width: 920px) {
+        width: 90%;
+    }
 `;
 
 const StyledTable = styled(Table)`
@@ -44,7 +48,10 @@ const SeacrhContainer = styled(Container)`
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
-    ${Container}
+
+    @media (max-width: 920px) {
+        width: 80%;
+    }
 `;
 
 const SearchText = styled(H3)`
@@ -55,7 +62,11 @@ const SearchText = styled(H3)`
 
 const SearchInput = styled(Input)`
     width: 70%;
-    ${Input}
+
+    @media (max-width: 920px) {
+        width: 90%;
+    }
+
 `;
 
 export default function CoinList() {
@@ -103,7 +114,7 @@ export default function CoinList() {
                 <SearchInput ref={input} onChange={handleChange} placeholder="type name of currencey"/>
             </SeacrhContainer>
             <ListContainer>
-            <StyledTable striped bordered hover>
+            <StyledTable responsive striped bordered hover>
                 <thead>
                     <tr>
                         <th>#</th>
