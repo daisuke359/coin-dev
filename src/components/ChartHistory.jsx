@@ -57,9 +57,10 @@ export default function ChartHistory({data}) {
                             label: ` ${dateFormat} Price Change`,
                             data: getDateFormat(),
                             fill: true,
-                            backgroundColor: "rgba(174, 305, 194, 0.5)",
-                            borderColor: "rgba(174, 305, 194, 0.4",
+                            backgroundColor: "rgba(111, 139, 250, 0.7)",
+                            borderColor: "rgba(111, 139, 250, 0.8)",
                             pointRadius: 0,
+                            borderWidth:2,
                         }
                     ]
                 }, 
@@ -68,7 +69,7 @@ export default function ChartHistory({data}) {
                 }
             })
             setChart(newChart);
-        };
+        }
 
     }, [dateFormat, data]);
 
