@@ -5,4 +5,4 @@ This app is created using ReactJS and technologies such as Context API, Styled-C
 
 ## Website
 
-The app is currently hosted on heroku and can be found at https://cryptocurrencytrackingapp.netlify.app/
+The app is currently hosted on Netlify and can be found at https://cryptocurrencytrackingapp.netlify.app/
