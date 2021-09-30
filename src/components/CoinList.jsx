@@ -8,7 +8,7 @@ import { useCurrencyContext } from '../context/CurrencyContext';
 import Paginate from './Pagination';
 
 const ListContainer = styled(Container)`
-    width: 80%;
+    width: 90%;
 
     @media (max-width: 920px) {
         width: 90%;
@@ -23,8 +23,7 @@ const StyledTable = styled(Table)`
     border: none;
 
     thead {
-        background-color: #1D1F27;
-        color: white;
+        background-color: rgb(248, 249, 251);
     }
 
     thead ,tr, th, td {
@@ -33,9 +32,17 @@ const StyledTable = styled(Table)`
 
     tr {
         border-bottom: 1px solid #dee2e6;
+        
+        td {
+            padding: 15px;
+        }
 
         &:last-child {
             border: none;
+        }
+
+        &:hover {
+            box-shadow: 0 4px 10px 2px rgb(0 0 0 / 5%);
         }
     }
 `;
@@ -56,7 +63,6 @@ const SeacrhContainer = styled(Container)`
 
 const SearchText = styled(H3)`
     padding-bottom: 30px;
-    color: white;
     ${H3}
 `;
 
@@ -114,7 +120,7 @@ export default function CoinList() {
                 <SearchInput ref={input} onChange={handleChange} placeholder="type name of currencey"/>
             </SeacrhContainer>
             <ListContainer>
-            <StyledTable responsive striped bordered hover>
+            <StyledTable responsive bordered hover>
                 <thead>
                     <tr>
                         <th>#</th>

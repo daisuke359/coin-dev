@@ -9,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: rgb(2,0,36);
-        background: linear-gradient(90deg, rgba(2,0,36,1) 1%, rgba(199,33,131,0.989233193277311) 100%, rgba(0,212,255,1) 100%);
+        background-color: rgb(248, 249, 251);
+        color: black;
     }
 `;
 export const Container = styled.div`

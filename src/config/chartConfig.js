@@ -1,25 +1,31 @@
 export const historyOptions = {
-    lineHeightAnnotation: {
-      always: true,
-      hover: false,
-      lineWeight: 1.5,
-    },
-
-    parsing: false,
-  
     animation: {
       duration: 2000,
     },
-    maintainAspectRatio: false,
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
+   hover: {
+      mode: 'nearest',
+      intersect: true
+    },
+    maintainAspectRatio: true,
     responsive: true,
     scales: {
       x: {
           type: "time",
           distribution: "linear",
+          grid: {
+            display: false,
+          }
         },
         y: {
             ticks: {
                 beginAtZero: true
+            },
+            grid: {
+              display: false,
             }
         }
     },

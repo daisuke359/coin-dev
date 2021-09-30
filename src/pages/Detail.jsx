@@ -12,6 +12,7 @@ const DetailContainer = styled(Container)`
     padding: 30px 60px;
     background-color: white;
     border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px 3px;
 
     @media (max-width: 920px) {
       width: 90%;
