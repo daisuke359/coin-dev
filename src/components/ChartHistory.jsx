@@ -1,10 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Chart, ArcElement, LineElement, BarElement, PointElement, BarController, BubbleController, DoughnutController, LineController, PieController, PolarAreaController, RadarController, ScatterController, CategoryScale, LinearScale, LogarithmicScale, RadialLinearScale, TimeScale, TimeSeriesScale, Decimation, Filler, Legend, Title, Tooltip } from 'chart.js';
 import { historyOptions } from '../config/chartConfig';
-import { useState } from 'react';
 import 'chartjs-adapter-moment';
-import { Container } from '../GlobalStyles';
 
 const ChartCanvas = styled.canvas`
 `;
@@ -33,17 +31,6 @@ export default function ChartHistory({data}) {
 
     useEffect(() => {
         if(detail) {
-            // const labels = [];
-            // const date = getDateFormat();
-            // for(let i = 0; i < date.length; i++) {
-            //     if(dateFormat === "1 Day") {
-            //         labels.push(new Date(date[i].x).toLocaleTimeString());
-            //     } else if(dateFormat === "1 Month") {
-            //         labels.push(new Date(date[i].x).toLocaleDateString());
-            //     } else if(dateFormat === "1 Year") {
-            //         labels.push(new Date(date[i].x).toLocaleDateString());
-            //     }                
-            // }
     
             if(chart) {
                 chart.destroy();
