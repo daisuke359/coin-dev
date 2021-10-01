@@ -29,7 +29,7 @@ const Nav = styled(Container)`
         .nav-item > a {
             color: white;
             text-decoration: none;
-            padding: 10px 15px;
+            padding: 12px 26px;
             border: 1px solid white;
             border-radius: 5px;
             margin-right: 10px;
@@ -67,10 +67,7 @@ export default function Navbar() {
             </div> 
             <ul className="nav-list">
                 <li className="nav-item">
-                    <a href="/">Login</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/">Sign up</a>
+                    <a href="/">Sign In</a>
                 </li>
             </ul>
         </Nav>
