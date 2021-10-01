@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container} from '../GlobalStyles';
+import { Link } from 'react-router-dom';
 
 const Nav = styled(Container)`
     position: sticky;
@@ -67,7 +68,7 @@ export default function Navbar() {
             </div> 
             <ul className="nav-list">
                 <li className="nav-item">
-                    <a href="/">Sign In</a>
+                    <Link to="/login">Sign In</Link>
                 </li>
             </ul>
         </Nav>
