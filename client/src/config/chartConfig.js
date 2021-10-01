@@ -1,15 +1,28 @@
+
+
 export const historyOptions = {
-  interaction: {
-    intersect: false
+  plugins: {
+    tooltip: {
+      mode: 'x',
+      intersect: false,
+      titleFont: {
+        size: 20
+      },
+      padding: 15,
+      bodyFont: {
+        size: 20
+      },
+      callbacks: {
+        label: function(context) {
+          var label = "";
+          if (context.parsed.y !== null) {
+            label = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD' }).format(context.parsed.y);
+          }
+          return label;
+        }
+      }
+    }
   },
-  tooltips: {
-    mode: 'x',
-    intersect: false
-  },
-  // hover: {
-  //   mode: 'index',
-  //   intersect: false
-  // },
   animation: {
     duration: 2000,
   },
