@@ -25,10 +25,9 @@ export const H3 = styled.h3`
 `;
 
 export const Input = styled.input`
-    background-color: #F5F5F5;
+    background-color: white;
     height: 40px;
-    margin: 0 auto;
-    border: 1px solid white;
+    border: 1px solid #dee2e6;
     padding: 5px;
     border-radius: 5px;
 

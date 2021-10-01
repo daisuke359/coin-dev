@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Table from 'react-bootstrap/Table'
-import { Container, H3, Input} from '../GlobalStyles';
+import { Container, Input} from '../GlobalStyles';
 import Coin from './Coin';
 import { useCurrencyContext } from '../context/CurrencyContext';
 import Paginate from './Pagination';
@@ -10,9 +10,32 @@ import Paginate from './Pagination';
 const ListContainer = styled(Container)`
     width: 90%;
 
-    @media (max-width: 920px) {
-        width: 90%;
+    .list-top {
+        display: flex;
+        margin-top: 60px;
+        margin-bottom: 25px;
+        justify-content: space-between;
     }
+
+    @media only screen and (max-width: 768px) {
+        .list-top {
+            flex-direction: column-reverse;
+            margin-bottom: 15px;
+
+            h3 {
+                font-size: 1.0rem;
+            }
+            input {
+                width: 90%;
+                margin: 0 auto 20px;
+            }
+
+        }
+    }
+`;
+
+const SearchInput = styled(Input)`
+    width: 20%;
 `;
 
 const StyledTable = styled(Table)`
@@ -22,12 +45,12 @@ const StyledTable = styled(Table)`
     overflow: hidden;
     border: none;
 
-    thead {
-        background-color: rgb(248, 249, 251);
-    }
-
     thead ,tr, th, td {
         border: none; 
+    }
+
+    thead {
+        border-bottom: 1px solid #dee2e6;
     }
 
     tr {
@@ -45,34 +68,12 @@ const StyledTable = styled(Table)`
             box-shadow: 0 4px 10px 2px rgb(0 0 0 / 5%);
         }
     }
-`;
 
-
-const SeacrhContainer = styled(Container)`
-    width: 60%;
-    padding: 30px 50px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-
-    @media (max-width: 920px) {
-        width: 80%;
+    @media only screen and (max-width: 768px) {
+        .th-invisible {
+            display: none;
+        }
     }
-`;
-
-const SearchText = styled(H3)`
-    padding-bottom: 30px;
-    ${H3}
-`;
-
-const SearchInput = styled(Input)`
-    width: 70%;
-
-    @media (max-width: 920px) {
-        width: 90%;
-    }
-
 `;
 
 export default function CoinList() {
@@ -114,20 +115,19 @@ export default function CoinList() {
     const currentItems = filteredCurrencies.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
-        <>
-            <SeacrhContainer>
-                <SearchText>Search Currency</SearchText>
-                <SearchInput ref={input} onChange={handleChange} placeholder="type name of currencey"/>
-            </SeacrhContainer>
-            <ListContainer>
+        <ListContainer>
+            <div className="list-top">
+                <h3 className="list-title">Top 100 Cryptocurrency Prices</h3>
+                <SearchInput ref={input} onChange={handleChange} placeholder="Search..."/>
+            </div>
             <StyledTable responsive bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th className="th-invisible">#</th>
                         <th>Coin</th>
                         <th>Price</th>
                         <th>24h</th>
-                        <th>Mkt Cap</th>
+                        <th className="th-invisible">Mkt Cap</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,7 +139,6 @@ export default function CoinList() {
             </StyledTable>
             {!currencies && <h4>No currency found</h4>}
             <Paginate currentPage={currentPage} postsPerPage={postsPerPage} totalPosts={filteredCurrencies.length} paginate={paginate} />
-            </ListContainer>
-        </>
+        </ListContainer>
     )
 }

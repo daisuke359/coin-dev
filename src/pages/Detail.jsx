@@ -4,6 +4,7 @@ import {useParams} from "react-router";
 import styled from 'styled-components';
 import ChartDetail from '../components/ChartDetail';
 import ChartHistory from '../components/ChartHistory';
+import Navbar from '../components/Navbar';
 import { Container } from '../GlobalStyles';
 
 const DetailContainer = styled(Container)`
@@ -74,6 +75,7 @@ export default function Detail() {
 
     return (
         <>
+            <Navbar/>
             <DetailContainer>
                 <ChartDetail detail={currencyData.detail}/>
                 <ChartHistory data={currencyData}/>
