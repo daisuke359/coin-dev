@@ -18,10 +18,6 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
 
-app.get("/", (req,res) => {
-    res.send("Hello");
-})
-
 app.use("/api/users", userRoute);
 
 app.listen(8800, () => {
