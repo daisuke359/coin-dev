@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { Container} from '../GlobalStyles';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Nav = styled(Container)`
     position: sticky;
@@ -27,7 +28,7 @@ const Nav = styled(Container)`
         list-style: none;
         justify-content: space-between;
 
-        .nav-item > a {
+        .nav-item > a, .nav-item > span {
             color: white;
             text-decoration: none;
             padding: 12px 26px;
@@ -46,7 +47,7 @@ const Nav = styled(Container)`
     @media only screen and (max-width: 768px) {
         padding: 20px 40px;
 
-        .nav-list > .nav-item > a {
+        .nav-list > .nav-item > a, .nav-list > .nav-item > span {
             padding: 6px 10px;
         }
     }
@@ -54,13 +55,21 @@ const Nav = styled(Container)`
     @media only screen and (max-width: 480px) {
         padding: 20px 20px;
 
-        .nav-list > .nav-item > a {
+        .nav-list > .nav-item > a, .nav-list > .nav-item > span {
             padding: 6px 10px;
         }
     }
 `;
 
 export default function Navbar() {
+
+    const {user} = useContext(AuthContext);
+
+    const handleLogout = () => {
+        localStorage.setItem("currentUser", null);
+        window.location.reload();
+    }
+
     return (
         <Nav>
            <div className="logo-container">
@@ -68,7 +77,7 @@ export default function Navbar() {
             </div> 
             <ul className="nav-list">
                 <li className="nav-item">
-                    <Link to="/login">Sign In</Link>
+                    {user ? <Link to="/login" onClick={handleLogout}>Sign Out</Link> : <Link to="/login">Sign In</Link> } 
                 </li>
             </ul>
         </Nav>
