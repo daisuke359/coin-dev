@@ -22,7 +22,7 @@ const logout = () => ({
 export const loginCall = async (userCredentials, dispatch) => {
     dispatch(LoginStart(userCredentials));
     try {
-        const res = await axios.post("http://localhost:8800/api/auth/login", userCredentials);
+        const res = await axios.post("/auth/login", userCredentials);
         dispatch(LoginSuccess(res.data));
     }
     catch(err) {
