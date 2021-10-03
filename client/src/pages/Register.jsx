@@ -125,7 +125,7 @@ export default function Register() {
 
         try {
             const existingUser = await axios.get(`/api/users/${email.current.value}`);
-            if(existingUser !== null) {
+            if(existingUser.data !== null) {
                 console.log(existingUser);
                 alert("Account already exists. Use different email address.");
             } 
