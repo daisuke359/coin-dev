@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import styled from "styled-components";
 import { Container } from '../GlobalStyles';
 import { Link } from 'react-router-dom';
+import { loginCall } from "../context/AuthActions";
 
 const LoginWrapper = styled.div`
     height: 100vh;
@@ -106,6 +108,19 @@ const LoginBtn = styled.button`
 `;
 
 export default function Login() {
+
+    const email = useRef();
+    const password = useRef();
+    const { isFetching, dispatch } = useContext(AuthContext);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        loginCall(
+            {email: email.current.value, password: password.current.value},
+            dispatch
+        ); 
+    }
+
     return (
         <LoginWrapper>
             <LoginContainer>
@@ -116,18 +131,21 @@ export default function Login() {
                         <Link to="/register">Sign Up</Link>
                     </div>
                 </LoginLeft>
-                <LoginRight>
+                <LoginRight onSubmit={handleSubmit}>
                     <h4>Login</h4>
-                    {/* <InputWrapper>
-                        <input placeholder="name" type="text" />
-                    </InputWrapper> */}
                     <InputWrapper>
-                        <input placeholder="email" type="email" />
+                        <input ref={email} required placeholder="email" type="email" />
                     </InputWrapper>
                     <InputWrapper>
-                        <input placeholder="passsword" type="password" />
+                        <input ref={password} required minLength="6" placeholder="passsword" type="password" />
                     </InputWrapper>
-                    <LoginBtn>LOGIN</LoginBtn>
+                    <LoginBtn type="submit" disabled={isFetching}>
+                        {isFetching ? (
+                            "logging in..."
+                        ) : (
+                            "LOGIN"
+                        )}
+                        </LoginBtn>
                 </LoginRight>
             </LoginContainer>
         </LoginWrapper>

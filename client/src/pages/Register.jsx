@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled from "styled-components";
 import { Container } from '../GlobalStyles';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
+import axios from "axios";
 
 const LoginWrapper = styled.div`
     height: 100vh;
@@ -106,6 +108,33 @@ const LoginBtn = styled.button`
 `;
 
 export default function Register() {
+
+    const username = useRef();
+    const email = useRef();
+    const password = useRef();
+
+    const history = useHistory();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const user = {
+            username: username.current.value,
+            email: email.current.value,
+            password: password.current.value
+        };
+
+        try {
+            const existingUser = await axios.get(`users/${email.current.value}`);
+            if(existingUser) alert("Account already exists. Use different email address.");
+            else {
+                await axios.post("auth/register", user);
+                history.push("/login");
+            }
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
     return (
         <LoginWrapper>
             <LoginContainer>
@@ -116,18 +145,18 @@ export default function Register() {
                         <Link to="/login">Login</Link>
                     </div>
                 </LoginLeft>
-                <LoginRight>
+                <LoginRight onSubmit={handleSubmit}>
                     <h4>Create Account</h4>
                     <InputWrapper>
-                        <input placeholder="name" type="text" />
+                        <input ref={username} required placeholder="name" type="text" />
                     </InputWrapper>
                     <InputWrapper>
-                        <input placeholder="email" type="email" />
+                        <input ref={email} required placeholder="email" type="email" />
                     </InputWrapper>
                     <InputWrapper>
-                        <input placeholder="passsword" type="password" />
+                        <input ref={password} required placeholder="passsword" type="password" />
                     </InputWrapper>
-                    <LoginBtn>SIGN UP</LoginBtn>
+                    <LoginBtn type="submit">SIGN UP</LoginBtn>
                 </LoginRight>
             </LoginContainer>
         </LoginWrapper>
