@@ -12,13 +12,11 @@ router.get("/allUsers", async (req, res) => {
 });
 
 //get a user
-router.get("/", async (req, res) => {
-    const userId = req.query.userId;
-    const username = req.query.username;
+router.get("/:email", async (req, res) => {
+    const email = req.params.email;
     try {
-        const user = userId ? await User.findById(userId) : await User.findOne({username: username});
-        const {password, updatedAt, ...other} = user._doc;
-        res.status(200).json(other);
+        const user = await User.findOne({email: email});
+        res.status(200).json(user);
     } catch(err) {
         return res.status(500).json(err);
     }

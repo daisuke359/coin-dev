@@ -124,8 +124,12 @@ export default function Register() {
         };
 
         try {
-            await axios.post("auth/register", user);
-            history.push("/login");
+            const existingUser = await axios.get(`users/${email.current.value}`);
+            if(existingUser) alert("Account already exists. Use different email address.");
+            else {
+                await axios.post("auth/register", user);
+                history.push("/login");
+            }
         } catch(err) {
             console.log(err);
         }

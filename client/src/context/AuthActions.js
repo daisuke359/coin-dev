@@ -1,17 +1,21 @@
 import axios from "axios";
 
-export const LoginStart = (userCredentials) => ({
+const LoginStart = (userCredentials) => ({
     type: "LOGIN_START",
 });
 
-export const LoginSuccess = (user) => ({
+const LoginSuccess = (user) => ({
     type: "LOGIN_SUCCESS",
     payload: user,
 });
 
-export const LoginFailure = (error) => ({
+const LoginFailure = (error) => ({
     type: "LOGIN_FAILURE",
     payload: error,
+});
+
+const logout = () => ({
+    type: "LOGOUT",
 });
 
 
@@ -22,6 +26,11 @@ export const loginCall = async (userCredentials, dispatch) => {
         dispatch(LoginSuccess(res.data));
     }
     catch(err) {
+        alert("Login failed!");
         dispatch(LoginFailure(err));
     }
 };
+
+export const logoutCall = (dispatch) => {
+    dispatch(logout());
+}

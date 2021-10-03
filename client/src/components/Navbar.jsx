@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { Container} from '../GlobalStyles';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { logoutCall } from '../context/AuthActions';
 
 const Nav = styled(Container)`
     position: sticky;
@@ -29,6 +30,7 @@ const Nav = styled(Container)`
         justify-content: space-between;
 
         .nav-item > a, .nav-item > span {
+            cursor: pointer;
             color: white;
             text-decoration: none;
             padding: 12px 26px;
@@ -63,11 +65,13 @@ const Nav = styled(Container)`
 
 export default function Navbar() {
 
-    const {user} = useContext(AuthContext);
+    const {user, dispatch} = useContext(AuthContext);
+    const history = useHistory();
 
     const handleLogout = () => {
         localStorage.setItem("currentUser", null);
-        window.location.reload();
+        logoutCall(dispatch);
+        history.push("/login");
     }
 
     return (
@@ -77,9 +81,10 @@ export default function Navbar() {
             </div> 
             <ul className="nav-list">
                 <li className="nav-item">
-                    {user ? <Link to="/login" onClick={handleLogout}>Sign Out</Link> : <Link to="/login">Sign In</Link> } 
+                    {user ? <span onClick={handleLogout}>Sign Out</span> : <Link to="/login">Sign In</Link> } 
                 </li>
             </ul>
         </Nav>
     )
 }
+
