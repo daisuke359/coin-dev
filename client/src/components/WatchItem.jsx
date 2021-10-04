@@ -10,8 +10,10 @@ const CoinCard = styled.div`
     box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px 3px;
     padding: 20px;
     margin-right: 20px;
+    margin-bottom: 20px;
     cursor: pointer;
-    width: 300px;
+    width: 25%;
+    min-width: 260px;
     aspect-ratio: 5/3;
 
     a {

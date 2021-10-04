@@ -17,6 +17,11 @@ const FavoriteContainer = styled(Container)`
 
 const ItemsContainer = styled(Container)`
     display: flex;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 
