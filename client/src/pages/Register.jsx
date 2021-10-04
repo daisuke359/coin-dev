@@ -21,6 +21,23 @@ const LoginContainer = styled(Container)`
     box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px 3px;
     display: flex;
     align-items: center;
+
+    @media (max-width: 1200px) {
+        width: 65%;
+    }
+
+    @media (max-width: 1023px) {
+        width: 75%;
+    }
+
+    @media (max-width: 768px) {
+        width: 85%;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 560px) {
+        flex-direction: column;
+    }
 `;
 
 const LoginLeft = styled.div`
@@ -56,6 +73,12 @@ const LoginLeft = styled.div`
             }
         }
     }
+
+    @media (max-width: 560px) {
+        width: 100%;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 0;
+    }
 `;
 
 const LoginRight = styled.form`
@@ -69,6 +92,11 @@ const LoginRight = styled.form`
 
     h4 {
         font-size: 1.6rem;
+    }
+
+    @media (max-width: 560px) {
+        width: 80%;
+        padding-bottom: 20px;
     }
 `;
 

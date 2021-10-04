@@ -24,48 +24,57 @@ const DetailContainer = styled(Container)`
 
 
 const ButtonsContainer = styled(Container)`
-      width: 35%;
-      margin: 50px auto 30px;
-      display: flex;
-      justify-content: space-around;
+  width: 35%;
+  margin: 50px auto 30px;
+  display: flex;
+  justify-content: space-around;
 
-      .btn-action {
-        cursor: pointer;
-        color: white;
-        text-decoration: none;
-        padding: 12px 26px;
-        border: 1px solid white;
-        border-radius: 5px;
-        margin-right: 10px;
-        transition: all 0.2s;
-        background-color: #0049FF;
+  .btn-action {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    padding: 12px 26px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 0.2s;
+    background-color: #0049FF;
 
-        &:hover {
-            background-color: white;
-            color: #0049FF;
-            border: 1px solid #0049FF;
-        }
-      }
+    &:hover {
+        background-color: white;
+        color: #0049FF;
+        border: 1px solid #0049FF;
+    }
+  }
 
 
-      .btn-back {
-        cursor: pointer;
-        text-decoration: none;
-        padding: 12px 26px;
-        border-radius: 5px;
-        margin-right: 10px;
-        transition: all 0.2s;
-        background-color: #eff2f5;
-        color: black;
-        border: 1px solid #808A9D;
+  .btn-back {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    background-color: #eff2f5;
+    color: black;
+    border: 1px solid #808A9D;
 
-        &:hover {
-          background-color: #0049FF;
-          color: white;
-          background-color: #808A9D;
-        }
-      }
-    `;
+    &:hover {
+      background-color: #0049FF;
+      color: white;
+      background-color: #808A9D;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .btn-action, .btn-back {
+      font-size: 0.9rem;
+      padding: 5px 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 30px;
+  }
+`;
 
 export default function Detail() {
 
