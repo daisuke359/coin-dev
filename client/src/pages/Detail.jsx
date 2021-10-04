@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import {useParams} from "react-router";
+import React, { useState, useEffect, useContext } from 'react';
+import {useParams, useHistory} from "react-router";
 import styled from 'styled-components';
 import ChartDetail from '../components/ChartDetail';
 import ChartHistory from '../components/ChartHistory';
 import Navbar from '../components/Navbar';
 import { Container } from '../GlobalStyles';
+import { AuthContext } from '../context/AuthContext';
 
 const DetailContainer = styled(Container)`
     width: 75%;
@@ -21,11 +22,58 @@ const DetailContainer = styled(Container)`
     }
 `;
 
+
+const ButtonsContainer = styled(Container)`
+      width: 35%;
+      margin: 50px auto 30px;
+      display: flex;
+      justify-content: space-around;
+
+      .btn-action {
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        padding: 12px 26px;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: all 0.2s;
+        background-color: #0049FF;
+
+        &:hover {
+            background-color: white;
+            color: #0049FF;
+            border: 1px solid #0049FF;
+        }
+      }
+
+
+      .btn-back {
+        cursor: pointer;
+        text-decoration: none;
+        padding: 12px 26px;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: all 0.2s;
+        background-color: #eff2f5;
+        color: black;
+        border: 1px solid #808A9D;
+
+        &:hover {
+          background-color: #0049FF;
+          color: white;
+          background-color: #808A9D;
+        }
+      }
+    `;
+
 export default function Detail() {
 
+    
     const id = useParams().id;
-
+    const {user, dispatch} = useContext(AuthContext);
     const [currencyData, setCurrencyData] = useState({});
+    const history = useHistory();
 
     const formatData = (data) => {
         return data.map((el) => {
@@ -34,7 +82,28 @@ export default function Detail() {
             y: el[1],
           };
         });
-      };
+    };
+
+    const handleClick = () => {
+      console.log(user.watchList);
+      if(!user.watchList.includes(currencyData.detail.id)) {
+        //Add to the list
+        try {
+          axios.put(`http://localhost:8800/api/users/${user._id}/watchlist/add`, {currency: currencyData.detail.id});
+          dispatch({type: "ADD_TO_LIST", payload: currencyData.detail.id});
+        }catch(err) {
+          console.log(err);
+        }
+      } else {
+        //remove from the list
+        try {
+          axios.put(`http://localhost:8800/api/users/${user._id}/watchlist/remove`, {currency: currencyData.detail.id});
+          dispatch({type:"REMOVE_FROM_LIST", payload: currencyData.detail.id});
+        }catch(err) {
+          console.log(err);
+        }
+      }
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -76,10 +145,21 @@ export default function Detail() {
     return (
         <>
             <Navbar/>
-            <DetailContainer>
-                <ChartDetail detail={currencyData.detail}/>
-                <ChartHistory data={currencyData}/>
-            </DetailContainer>
+            {currencyData.detail && 
+              <DetailContainer>
+              <ChartDetail detail={currencyData.detail}/>
+              <ChartHistory data={currencyData}/>
+              <ButtonsContainer>
+                <button onClick={() => history.goBack()} className="btn-back">Back</button>
+                {user &&
+                  <button onClick={handleClick} className="btn-action">
+                    {!user.watchList.includes(currencyData.detail.id) ? "Add to Watchlist" : "Remove from Watchlist"}
+                  </button>
+                }
+              </ButtonsContainer>
+              </DetailContainer>
+            }
+            
         </>
     )
 }

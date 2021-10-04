@@ -24,6 +24,22 @@ export const AuthReducer = (state, action) => {
                 isFetching: false,
                 error: false
             }
+        case "ADD_TO_LIST":
+            return {
+                ...state,
+                user: {
+                    ...state.user, 
+                    watchList: [...state.user.watchList, action.payload],
+                }
+            }
+        case "REMOVE_FROM_LIST":
+            return {
+                ...state,
+                user: {
+                    ...state.user, 
+                    watchList: state.user.watchList.filter(item=>item !== action.payload),
+                }
+            }
         default:
             return state;
     }

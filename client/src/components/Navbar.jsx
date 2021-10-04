@@ -71,7 +71,7 @@ export default function Navbar() {
     const handleLogout = () => {
         localStorage.setItem("currentUser", null);
         logoutCall(dispatch);
-        history.push("/login");
+        history.push("/");
     }
 
     return (

@@ -117,7 +117,7 @@ export default function CoinList() {
     return (
         <ListContainer>
             <div className="list-top">
-                <h3 className="list-title">Top 100 Cryptocurrency Prices</h3>
+                <h4 className="list-title">Top 100 Cryptocurrency Prices</h4>
                 <SearchInput ref={input} onChange={handleChange} placeholder="Search..."/>
             </div>
             <StyledTable responsive bordered hover>
