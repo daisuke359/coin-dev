@@ -24,10 +24,10 @@ const DetailContainer = styled(Container)`
 
 
 const ButtonsContainer = styled(Container)`
-  width: 35%;
+  width: 100%;
   margin: 50px auto 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .btn-action {
     cursor: pointer;
