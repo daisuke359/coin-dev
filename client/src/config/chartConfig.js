@@ -3,7 +3,7 @@
 export const historyOptions = {
   plugins: {
     tooltip: {
-      mode: 'x',
+      mode: 'nearest',
       intersect: false,
       titleFont: {
         size: 20
