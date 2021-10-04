@@ -89,7 +89,7 @@ export default function Detail() {
       if(!user.watchList.includes(currencyData.detail.id)) {
         //Add to the list
         try {
-          axios.put(`http://localhost:8800/api/users/${user._id}/watchlist/add`, {currency: currencyData.detail.id});
+          axios.put(`/api/users/${user._id}/watchlist/add`, {currency: currencyData.detail.id});
           dispatch({type: "ADD_TO_LIST", payload: currencyData.detail.id});
         }catch(err) {
           console.log(err);
@@ -97,7 +97,7 @@ export default function Detail() {
       } else {
         //remove from the list
         try {
-          axios.put(`http://localhost:8800/api/users/${user._id}/watchlist/remove`, {currency: currencyData.detail.id});
+          axios.put(`/api/users/${user._id}/watchlist/remove`, {currency: currencyData.detail.id});
           dispatch({type:"REMOVE_FROM_LIST", payload: currencyData.detail.id});
         }catch(err) {
           console.log(err);
