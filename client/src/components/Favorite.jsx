@@ -31,7 +31,10 @@ export default function Favorite({user}) {
     return (
         <FavoriteContainer>
            <h2>Welcome back, {user.username}!</h2>
-           <h4>Your favorite currencies</h4>
+           {user.watchList ? 
+                <h4>Your favorite currencies</h4>
+                : <h4>Add your favorite currencies to watchlist!</h4>
+           }
             <ItemsContainer>
                 {user.watchList && (
                     user.watchList.map((coin, index) => (
