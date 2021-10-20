@@ -27,11 +27,10 @@ const ItemsContainer = styled(Container)`
 
 export default function Favorite({user}) {
 
-    console.log(user.watchList);
     return (
         <FavoriteContainer>
            <h2>Welcome back, {user.username}!</h2>
-           {user.watchList ? 
+           {user.watchList == [] ? 
                 <h4>Your favorite currencies</h4>
                 : <h4>Add your favorite currencies to watchlist!</h4>
            }
