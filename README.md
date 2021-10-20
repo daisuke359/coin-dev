@@ -18,10 +18,6 @@ Cryptocurrency tracking app built with the MERN Stack and third party API.
 :white_check_mark: &nbsp; Flexbox  
 
 
-## Demo
-
-https://user-images.githubusercontent.com/77464668/138156101-846acb5d-110c-4e43-a02f-416b4ab05bb8.mp4
-
 
 ## Website
 
