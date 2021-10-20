@@ -1,4 +1,4 @@
-# Cyptocurrency Tracker App
+# Coin Dev
 
 Cryptocurrency tracking app built with the MERN Stack and third party API.
 
