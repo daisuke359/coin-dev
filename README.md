@@ -1,7 +1,22 @@
 # Cyptocurrency Tracker App
 
-This app uses public crypto API to display current price as well as historic data.
-This app is created using ReactJS and technologies such as Context API, Styled-Components and Pagination. Now working on features such as authentication and watch list.
+Cryptocurrency tracking app built with the MERN Stack and third party API.
+
+:computer: Users are able to see the list of top 100 cryptocurrency as well as the detail and price chart of each currency.
+:computer: Users can sign up, login with username, email and password.
+:computer: Logged-in users can add their favorite currencies to watchlist.
+
+
+## Technologies Used
+:white_check_mark: React
+:white_check_mark: Node
+:white_check_mark: Express
+:white_check_mark: MongoDB
+:white_check_mark: Chart.js
+:white_check_mark: Context API
+:white_check_mark: Styled-Components
+:white_check_mark: Flexbox
+
 
 ## Website
 
